@@ -19,15 +19,13 @@ const generateNumber = () => {
 
 app.get('/', (req, res) => {
   req.session.number = generateNumber();
-  res.sendFile(__dirname + '/views/index.html');
+  res.sendFile(__dirname + '/public/app.html');
   console.log(req.session.number);
 });
 
 app.post("/guess", (req, res) => {
 
   const userNumber = parseInt(req.body.number);
-
-  console.log("req.body", req.body);
 
   if (!req.session.number) {
     req.session.number = generateNumber();
